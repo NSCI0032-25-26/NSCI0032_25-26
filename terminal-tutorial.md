@@ -4,6 +4,21 @@
 type the following (following each command, press return or enter to execute)
 
 ```bash
+
+#Create or extract archive files. 
+
+$tar
+-c: Create a new archive.
+-x: Extract files from an archive.
+-f: Specify the archive file name.
+-v: Verbose mode.
+-z: Compress the archive with gzip.
+-j: Compress the archive with bzip2.
+
+#example
+$tar -czvf archive.tar.gz files/ 
+creates a compressed tar archive named "archive.tar.gz" containing the files in the "files/" directory.
+
 # this will always take you back to the root, i.e., your home folder
 
 $ cd 
