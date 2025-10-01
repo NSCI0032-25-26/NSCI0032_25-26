@@ -6,6 +6,10 @@ type the following (following each command, press return or enter to execute)
 ```bash
 # this will always take you back to the root, i.e., your home folder
 
+$ top
+
+# Table of processes, shows a dynamic, real-time view of running processes and kernel-managed tasks in Linux.
+
 $ cd 
 
 # check which folder you are in
