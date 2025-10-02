@@ -1,0 +1,4 @@
+\beamer@sectionintoc {1}{Lecture 1 }{3}{0}{1}
+\beamer@subsectionintoc {1}{1}{1.10.2025}{3}{0}{1}
+\beamer@sectionintoc {2}{Lecture 2 (Teaching Week 1)}{8}{0}{2}
+\beamer@subsectionintoc {2}{1}{Thursday 2nd of October 2025}{8}{0}{2}
