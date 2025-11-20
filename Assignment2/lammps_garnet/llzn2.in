@@ -1,0 +1,67 @@
+# run like lmp -in in.lmp
+
+variable T_start equal 1100
+variable T_end   equal 1100
+variable total_steps equal 80000
+
+units  metal
+atom_style charge
+boundary p p p
+
+read_data LLZO.2x2x2.lmp
+variable lx equal lx
+variable ly equal ly
+variable lz equal lz
+
+pair_style buck/coul/long 10.0
+kspace_style ewald 1e-4
+
+pair_coeff 1 4 1087.29 0.260 0.0
+pair_coeff 2 4 2075.26 0.326 23.25
+pair_coeff 3 4 1650.32 0.311 5.10
+pair_coeff 4 4 4870.00 0.267 77.00
+pair_coeff 1 1 0.0 1.0 0.0
+pair_coeff 1 2 0.0 1.0 0.0
+pair_coeff 1 3 0.0 1.0 0.0
+pair_coeff 2 2 0.0 1.0 0.0
+pair_coeff 2 3 0.0 1.0 0.0
+pair_coeff 3 3 0.0 1.0 0.0
+
+neighbor      2.0 bin
+neigh_modify  delay 10 every 1
+timestep      0.001
+velocity      all create ${T_start} 1281937
+
+thermo        1
+thermo_modify flush yes            # force newline flush
+thermo_modify lost ignore          # avoid extra warnings
+#echo screen                        # show expanded commands only once
+
+thermo_style  custom step temp press lx ly lz
+
+variable T equal ${T_start}
+variable s equal step
+variable t equal temp
+variable p equal press
+variable Tdamp  equal 100*dt # not used but as a rule of thumb..
+variable Pdamp  equal 100*dt
+variable PdampZ equal 1000*dt
+
+fix npt all npt temp ${T} ${T} 0.2 x 0.0 0.0 5.0  y 0.0 0.0 5.0 z 0.0 0.0 5.0 couple xy
+
+fix thermo_out all print 1 "${s} ${t} ${p} ${lx} ${ly} ${lz}" file thermo_clean.dat screen no
+
+dump dump_all all custom 100 dump_all.lammpstrj id type x y z q
+dump_modify dump_all sort id
+
+fix ave_lattice_T all ave/time 100 200 20000 v_lx v_ly v_lz  file lattice_params_${T}K.dat
+
+run ${total_steps}
+print "${T} $(lx) $(lz)" append lat.dat screen no
+
+unfix ave_lattice_T
+unfix npt
+undump dump_all
+
+write_data    LLZO_${T}K.data
+write_restart LLZO.restart
