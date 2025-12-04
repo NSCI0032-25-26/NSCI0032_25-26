@@ -1,0 +1,50 @@
+&CONTROL
+   calculation      = 'scf'
+   verbosity        = 'high'
+   tstress          = .false.
+   tprnfor          = .false.
+   pseudo_dir       = '/home/jovyan/NSCI0032-25-26-tutor/cuta_interface/pseudo'
+/
+&SYSTEM
+   ecutwfc          = 50
+   ecutrho          = 400
+   occupations      = 'smearing'
+   degauss          = 0.02
+   smearing         = 'mp'
+   ntyp             = 2
+   nat              = 8
+   ibrav            = 0
+/
+&ELECTRONS
+   conv_thr         = 1e-06
+/
+&IONS
+/
+&CELL
+/
+&FCP
+/
+&RISM
+/
+ATOMIC_SPECIES
+Cu 63.546 Cu.pbe-dn-kjpaw_psl.1.0.0.UPF
+Ta 180.94788 Ta_pbe_v1.uspp.F.UPF
+
+K_POINTS automatic
+4 4 1  0 0 0
+
+CELL_PARAMETERS angstrom
+2.55619101398937 0.00000000000000 0.00000000000000
+0.00000000000000 2.55619101398937 0.00000000000000
+0.00000000000000 0.00000000000000 26.37250000000000
+
+ATOMIC_POSITIONS angstrom
+Cu 1.2780955070 1.2780955070 0.0000000000  
+Cu 0.0000000000 0.0000000000 1.8075000000  
+Cu 1.2780955070 1.2780955070 3.6150000000  
+Cu 0.0000000000 0.0000000000 5.4225000000  
+Ta 1.2780955070 1.2780955070 13.4225000000  
+Ta 0.0000000000 0.0000000000 15.0725000000  
+Ta 1.2780955070 1.2780955070 16.7225000000  
+Ta 0.0000000000 0.0000000000 18.3725000000  
+
