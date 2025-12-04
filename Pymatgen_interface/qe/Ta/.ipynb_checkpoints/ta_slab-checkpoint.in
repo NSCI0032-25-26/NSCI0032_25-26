@@ -1,0 +1,44 @@
+&CONTROL
+   calculation      = 'scf'
+   outdir           = 'tmp'
+   prefix           = 'Ta_slab'
+   pseudo_dir       = '/apps/QE/pseudo/efficiency'
+/
+&SYSTEM
+   ibrav            = 0
+   nat              = 3
+   ntyp             = 1
+   ecutwfc          = 45
+   ecutrho          = 300
+   occupations      = 'smearing'
+   degauss          = 0.02
+   smearing         = 'mp'
+/
+&ELECTRONS
+   conv_thr         = 0.0001
+   mixing_beta      = 0.3
+/
+&IONS
+/
+&CELL
+/
+&FCP
+/
+&RISM
+/
+ATOMIC_SPECIES
+Ta 180.94788 Ta_pbe_v1.uspp.F.UPF
+
+K_POINTS automatic
+1 1 1  0 0 0
+
+CELL_PARAMETERS angstrom
+5.11238203000000 0.00000000000000 0.00000000000000
+2.55619101500000 4.42745271183106 0.00000000000000
+0.00000000000000 0.00000000000000 20.00000000000000
+
+ATOMIC_POSITIONS angstrom
+Ta 0.0000000000 0.0000000000 15.7142858000  
+Ta 2.5561909894 1.4758175559 15.7142858000  
+Ta 5.1123820556 2.9516351560 15.7142858000  
+

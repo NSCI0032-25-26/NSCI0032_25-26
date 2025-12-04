@@ -1,0 +1,49 @@
+&CONTROL
+   calculation      = 'scf'
+   outdir           = './tmp'
+   prefix           = 'CuTa_gap2'
+   pseudo_dir       = '/apps/QE/pseudo/efficiency'
+/
+&SYSTEM
+   ibrav            = 0
+   nat              = 7
+   ntyp             = 2
+   ecutwfc          = 45
+   ecutrho          = 300
+   occupations      = 'smearing'
+   degauss          = 0.02
+   smearing         = 'mp'
+/
+&ELECTRONS
+   conv_thr         = 0.0001
+   mixing_beta      = 0.3
+/
+&IONS
+/
+&CELL
+/
+&FCP
+/
+&RISM
+/
+ATOMIC_SPECIES
+Ta 180.94788 Ta_pbe_v1.uspp.F.UPF
+Cu 63.546 Cu.paw.z_11.ld1.psl.v1.0.0-low.upf
+
+K_POINTS automatic
+1 1 1  0 0 0
+
+CELL_PARAMETERS angstrom
+5.11238203000000 0.00000000000000 0.00000000000000
+2.55619101500000 4.42745271183106 0.00000000000000
+0.00000000000000 0.00000000000000 12.00000000000000
+
+ATOMIC_POSITIONS angstrom
+Ta 0.0000000000 0.0000000000 7.1428572000  
+Ta 2.5561909894 1.4758175559 7.1428572000  
+Ta 5.1123820556 2.9516351560 7.1428572000  
+Cu 3.8342865481 0.7379088001 5.1428571600  
+Cu 1.2780955331 0.7379088001 5.1428571600  
+Cu 5.1123820556 2.9516351560 5.1428571600  
+Cu 2.5561910406 2.9516351560 5.1428571600  
+
